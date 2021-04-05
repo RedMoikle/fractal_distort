@@ -24,7 +24,7 @@ def subset(sel, pcnt):
 def blob_move(verts, amplitude, sel_scale, soft_scale):
     pm.select(subset(verts, sel_scale))
     pm.softSelect(sse=True, ssd=soft_scale)
-    pm.move(amplitude, y=True, os=True, relative=True)
+    pm.move(amplitude, amplitude, xy=True, os=True, relative=True)
 
 
 def blob_noise(verts, n, amplitude, sel_scale, soft_scale):
