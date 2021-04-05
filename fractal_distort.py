@@ -49,7 +49,13 @@ def fractal_waves(verts, octaves, amplitude, sel_scale, soft_scale, sel_pers=3, 
         amplitude *= amp_pers
 
 
+def stretch_waves(verts, octaves, amplitude, sel_scale, soft_scale, sel_pers=3, soft_pers=0.7, amp_pers=0.7):
+    mesh_transform = verts[0].node().getParent()
+    pm.scale(mesh_transform, 0.5, z=True, r=True)
+    fractal_waves(verts, octaves, amplitude, sel_scale, soft_scale, sel_pers=3, soft_pers=0.7, amp_pers=0.7)
+    pm.scale(mesh_transform, 2, z=True, r=True)
 
 if __name__ == '__main__':
-    for _obj in sel:
-        do_noise(_obj)
+
+    #stretch_waves(verts, 4, -0.5, 0.002, 4)
+    pass
