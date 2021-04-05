@@ -41,22 +41,13 @@ def wave_noise(verts, amplitude, sel_scale, soft_scale):
     blob_move(second_verts, -offset_y * random.random() * (0.5 + 0.5), 1, soft_scale)
 
 
-def fractal_waves(verts, octaves, amplitude, sel_scale, soft_scale):
+def fractal_waves(verts, octaves, amplitude, sel_scale, soft_scale, sel_pers=3, soft_pers=0.7, amp_pers=0.7):
     for i in range(octaves):
         wave_noise(verts, amplitude, sel_scale, soft_scale)
-        sel_scale *= 2
-        soft_scale *= 0.8
-        amplitude *= 0.5
+        sel_scale *= sel_pers
+        soft_scale *= soft_pers
+        amplitude *= amp_pers
 
-def do_noise(verts, octaves=4, selections=0.5, amplitude=0.2, frequency=0.5, direction=(0, 1, 0), anchor=0.5,
-             amp_pers=0.5, freq_pers=0.5, sel_pers=2):
-    normalise = 1 / sum([amp_pers**o for o in range(1, octaves + 1)])
-    for i in range(1, octaves + 1):
-        o_scale = octaves / i
-        selections*=sel_pers
-        amplitude*=amp_pers
-
-        blob_noise(verts, selections)
 
 
 if __name__ == '__main__':
